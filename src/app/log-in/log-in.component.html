@@ -1,0 +1,10 @@
+<form *ngIf="isNotLogged" (ngSubmit)="onClickSubmit(user, password)">
+	<input required [(ngModel)]="user" name="user" id="user" type="text" ngModel><label for="user">user</label>
+	<br>
+	<input required [(ngModel)]="password" name="password" id="password" type="text" ngModel><label for="password">password</label>
+	<br>
+	<input type="submit" value="submit">
+</form>
+<p *ngIf="isUserNotExisted" style="background-color: red">username and password are wrong</p>
+<p> login: Vasa, password: 123456, role: writer</p>
+<p> login: Pete, password: 123456, role: reader</p>

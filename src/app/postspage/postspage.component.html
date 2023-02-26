@@ -1,0 +1,21 @@
+
+<label for="limit">limit</label>
+<select id="limit" [(ngModel)]="limit">
+	<option value="10">10</option>
+	<option value="20">20</option>
+	<option value="30">30</option>
+</select>
+
+<label for="page">page</label><input size="1" id="page" [(ngModel)]="page">
+<br><br>
+
+<div *ngFor="let p of posts_list;let i = index">
+	<p *ngIf="i <= page*limit && i > (page-1)*limit"><a style="background-color: #ffaddf" [routerLink]="['/post', p.id]">Read post</a>
+	<button *ngIf="userId == p.userId" type="button" (click)="edit(p.id)">Edit</button>
+	<button *ngIf="admin == 'true'" type="button" (click)='del_post(p.id)'>Delete</button>
+	{{ p.smallText }}
+	создано {{ p.createdAt }}
+	<span *ngIf="p.updatedAt">обновлено {{ p.updatedAt }}</span>
+	пользователь {{ p.userId }}
+	</p>
+</div>

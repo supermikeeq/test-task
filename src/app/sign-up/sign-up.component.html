@@ -1,0 +1,27 @@
+<form *ngIf="isNotLogged && !dataSent" #t="ngForm" (ngSubmit)="onClickSubmit(firstName, lastName, email, role, password)">
+	<input required minlength="3" [(ngModel)]="firstName" name="firstName" id="firstName" type="text" #n1="ngModel"><label for="first">firstName</label>
+	<br>
+	<input required minlength="3" [(ngModel)]="lastName" name="lastName" id="lastName" type="text" #n2="ngModel"><label for="lastName">lastName</label>
+	<br>
+	<input required email [(ngModel)]="email" name="email" id="email" type="text" #n3="ngModel"><label for="email">email</label>
+	<br>
+	<select required [(ngModel)]="role" name="role" id="role" type="text" #n4="ngModel">
+		<option value="writer">writer</option>
+		<option value="reader">reader</option>
+	</select><label for="role">role</label>
+	<br>
+	<input required minlength="6" [(ngModel)]="password" name="password" id="password" type="text" #n5="ngModel"><label for="password">password</label>
+	<br>
+	<input required minlength="6" [(ngModel)]="passwordCheck" name="passwordCheck" id="passwordCheck" type="text" #n6="ngModel"><label for="passwordCheck">passwordCheck</label>
+	<br>
+	<input [disabled]="!t.form.valid && !passMatch" type="submit" value="submit">
+
+
+	<div *ngIf="n1.invalid" style="background-color: red">Name is required, minlength is 3</div>
+	<div *ngIf="n2.invalid" style="background-color: red">Lastname is required, minlength is 3</div>
+	<div *ngIf="n3.invalid" style="background-color: red">email is wrong</div>
+	<div *ngIf="n4.invalid" style="background-color: red">role is wrong</div>
+	<div *ngIf="n5.invalid" style="background-color: red">password is required, minlength is 6</div>
+	<div *ngIf="n5.value !== n6.value" style="background-color: red">passwords don't match</div>
+</form>
+<div *ngIf="dataSent" style="background-color: green">You created your user! You can log-in now.</div>

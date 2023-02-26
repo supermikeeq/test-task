@@ -1,0 +1,12 @@
+<nav>
+	<ul class="nav text-white text-center p-5 container-fluid">
+		<li class="nav-item"><a class="nav-link" routerLink="/main" routerLinkActive="active" ariaCurrentWhenActive="page">main</a></li>
+		<li class="nav-item"><a class="nav-link" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">sign-in</a></li>
+		<li class="nav-item"><a class="nav-link" routerLink="/sign-up" routerLinkActive="active" ariaCurrentWhenActive="page">sign-up</a></li>
+		<li class="nav-item"><a class="nav-link" routerLink="/posts" routerLinkActive="active" ariaCurrentWhenActive="page">posts</a></li>
+		<li *ngIf="isLogged" class="nav-item"><a class="nav-link" routerLink="/create" routerLinkActive="active" ariaCurrentWhenActive="page">create post</a></li>
+		<li style="background-color: #a18801" class="nav-item"><a class="nav-link">Hello, {{ userName }} </a></li>
+		<button type="button" (click)="this.auth.logOut()">exit</button>
+	</ul>
+</nav>
+<router-outlet></router-outlet>

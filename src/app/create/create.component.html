@@ -1,0 +1,8 @@
+<div *ngIf='!visible' style='background-color: green'>You created a post!</div>
+<div *ngIf='visible'>
+	<textarea cols="70" rows="1" #t1>{{ post_small }}</textarea>
+	<br>
+	<textarea cols="100" rows="10" #t2>{{ post_large }}</textarea>
+	<br>
+	<button type="button" (click)='create_post({"smallText": t1.value, "largeText": t2.value, "createdAt": currentDate, "userId": userId })'>Save</button>
+</div>
